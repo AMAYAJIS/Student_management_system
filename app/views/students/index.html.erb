@@ -1,0 +1,64 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<h1>Listing Students</h1>
+
+<%= link_to 'New Student', new_student_path %><br><br>
+
+<%= form_tag(students_search_path, method: :get) do %>
+  <%= text_field_tag 'name', params[:name], placeholder: 'Search by name' %>
+  <%= text_field_tag 'date_of_birth', params[:date_of_birth], placeholder: 'Search by date of birth' %>
+  <%= text_field_tag 'standard', params[:standard], placeholder: 'Search by class' %>
+  <%= text_field_tag 'total_marks', params[:total_marks], placeholder: 'Search by total marks' %>
+  <%= submit_tag 'Search' %>
+<% end %></br>
+
+<div class="centered-table">
+  <table>
+    <thead>
+      <tr>
+        <th style="padding-right: 5px;">Student Name</th>
+        <th style="padding-right: 5px;">Date of Birth</th>
+        <th style="padding-right: 5px;">Class</th>
+        <th style="padding-right: 5px;">Total Marks</th>
+        <th style="padding-right: 5px;">Maximum Marks</th>
+        <th colspan="3" style="padding-right: 20px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.date_of_birth %></td>
+          <td><%= student.standard %></td>
+          <td><%= student.total_marks %></td>
+          <td><%= student.maximum_marks %></td>
+          <td><%= button_to 'View', student, method: :get %></td>
+          <td><%= button_to 'Edit', edit_student_path(student), method: :get %></td>
+          <td><%= button_to 'Delete', student, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div><br><br>
+<%= form_tag generate_report_students_path, method: :post do %>
+  <%= label_tag :selected_class, "Standard" %>
+  <%= select_tag :selected_class, options_for_select(["UKG", "LKG", "I", "II"]) %>
+  <%= submit_tag 'Generate Report and Email', class: 'btn btn-primary' %>
+<% end %>
+
+

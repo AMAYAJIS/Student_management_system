@@ -1,0 +1,32 @@
+<style>
+  .student-photo {
+    max-width: 200px; /* Adjust the desired width */
+    max-height: 200px; /* Adjust the desired height */
+  }
+</style>
+
+<h1>Personal Details</h1>
+
+<% if @student.photo.attached? %>
+  <p><strong>Photo:</strong></p>
+  <%= image_tag @student.photo, class: "student-photo" %>
+<% end %>
+
+<p><strong>Name:</strong> <%= @student.name %></p>
+<p><strong>Date of Birth:</strong> <%= @student.date_of_birth %></p>
+<p><strong>Father's Name:</strong> <%= @student.father_name %></p>
+<p><strong>Mother's Name:</strong> <%= @student.mother_name %></p>
+<p><strong>Blood Group:</strong> <%= @student.blood_group %></p>
+<p><strong>Resident Address:</strong> <%= @student.resident_address %></p>
+
+<hr>
+
+<h1>Academic Details</h1>
+
+<p><strong>Class:</strong> <%= @student.standard %></p>
+<p><strong>Total Marks:</strong> <%= @student.total_marks %></p>
+<p><strong>Maximum Marks:</strong> <%= @student.maximum_marks %></p>
+
+<%= link_to 'Back', students_path %> | <%= link_to 'Edit', edit_student_path(@student) %>
+
+

@@ -1,0 +1,56 @@
+<h1>Edit Student</h1>
+<%= form_with(model: @student, url: student_path(@student), local: true, method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %><br>
+    <%= form.date_field :date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :standard %><br>
+    <%= form.text_field :standard %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_marks %><br>
+    <%= form.number_field :total_marks %>
+  </div>
+   <div class="field">
+    <%= form.label :maximum_marks %><br>
+    <%= form.number_field :maximum_marks %>
+  </div>
+  <div class="field">
+      <%= form.label :father_name %><br>
+      <%= form.text_field :father_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :mother_name %><br>
+      <%= form.text_field :mother_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :blood_group %><br>
+      <%= form.text_field :blood_group %>
+    </div>
+
+    <div class="field">
+      <%= form.label :resident_address %><br>
+      <%= form.text_field :resident_address %>
+    </div>
+
+  <div class="field">
+    <%= form.label :photo %><br>
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update Student' %>
+  </div>
+<% end %>
+
+

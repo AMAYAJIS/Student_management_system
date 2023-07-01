@@ -1,0 +1,38 @@
+<h1>Search Results</h1>
+
+<% if @students.present? %>
+
+<div class="centered-table">
+<table>
+  <thead>
+    <tr>
+      <th style="padding-right: 5px;">Student Name</th>
+      <th style="padding-right: 5px;">Date of Birth</th>
+      <th style="padding-right: 5px;">Class</th>
+      <th style="padding-right: 5px;">Total Marks</th>
+      <th style="padding-right: 5px;">Maximum Marks</th>
+      <th colspan="3" style="padding-right: 20px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.date_of_birth %></td>
+        <td><%= student.standard %></td>
+        <td><%= student.total_marks %></td>
+        <td><%= student.maximum_marks %></td>
+        <td><%= button_to 'View', student, method: :get %></td>
+        <td><%= button_to 'Edit', edit_student_path(student), method: :get %></td>
+        <td><%= button_to 'Delete', student, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<% else %>
+  <p>No students found.</p>
+<% end %>
+
+
